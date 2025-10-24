@@ -8,6 +8,9 @@ const $data = document.querySelectorAll(".data__input"),
   $message = document.querySelector(".data__message"),
 
   regexNames = /^[A-Za-zñÑáéíóúÁÉÍÓÚ]{1,15}$/i,
+  regexRole = /^[a-z_\- ]+$/i,
+  regexURL = /^[A-Za-z0-9._%+-]+[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+  regexAddress = /^[1-9_a-z_.,_\- ]+$/i,
   regexPhone = /^\+?\d{1,15}$/,
   regexMail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
   inputError = {
@@ -62,6 +65,14 @@ const checkData = (element) => {
     inputError.input_phone = checkElement(regexPhone, element)
   else if (element.getAttribute("name") === "Email")
     inputError.input_email = checkElement(regexMail, element)
+  else if (element.getAttribute("name") === "Company")
+    inputError.input_lastName = checkElement(regexRole, element)
+  else if (element.getAttribute("name") === "Role")
+    inputError.input_lastName = checkElement(regexRole, element)
+  else if (element.getAttribute("name") === "URL")
+    inputError.input_lastName = checkElement(regexURL, element)
+  else if (element.getAttribute("name") === "Address")
+    inputError.input_lastName = checkElement(regexAddress, element)
   checkError();
   if (!Object.values(inputError).includes(false) && Array.from($data)[getIndex($data, "Name")].value && Array.from($data)[getIndex($data, "Phone")].value)
     enableItem($buttonGenerateQr)
@@ -101,6 +112,10 @@ N:${Array.from($data)[getIndex($data, "LastName")].value};${Array.from($data)[ge
 FN:${Array.from($data)[getIndex($data, "Name")].value} ${Array.from($data)[getIndex($data, "LastName")].value}
 TEL;CELL:${Array.from($data)[getIndex($data, "Phone")].value}
 EMAIL:${Array.from($data)[getIndex($data, "Email")].value}
+ORG:${Array.from($data)[getIndex($data, "Company")].value}
+TITLE:${Array.from($data)[getIndex($data, "Role")].value}
+URL:${Array.from($data)[getIndex($data, "URL")].value}
+ADR:${Array.from($data)[getIndex($data, "Address")].value}
 END:VCARD`
 }
 const imgTemplate = () => {
