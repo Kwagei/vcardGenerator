@@ -63,6 +63,8 @@ const checkData = (element) => {
     inputError.input_lastName = checkElement(regexNames, element)
   else if (element.getAttribute("name") === "Phone")
     inputError.input_phone = checkElement(regexPhone, element)
+  else if (element.getAttribute("name") === "Work")
+    inputError.input_phone = checkElement(regexPhone, element)
   else if (element.getAttribute("name") === "Email")
     inputError.input_email = checkElement(regexMail, element)
   else if (element.getAttribute("name") === "Company")
@@ -90,12 +92,12 @@ const clear = () => {
     e.classList.remove("data__input--error")
     e.classList.remove("data__input--succes")
   })
-  Array.from($options)[getIndex($options, "dotStyle")].value = "square"
-  Array.from($options)[getIndex($options, "dotColor")].value = "#182c2b"
+  Array.from($options)[getIndex($options, "dotStyle")].value = "dot"
+  Array.from($options)[getIndex($options, "dotColor")].value = "#ff6609"
   Array.from($options)[getIndex($options, "cornerStyle")].value = ""
-  Array.from($options)[getIndex($options, "cornerColor")].value = "#182c2b"
+  Array.from($options)[getIndex($options, "cornerColor")].value = "#ff6609"
   Array.from($options)[getIndex($options, "cornerDotStyle")].value = ""
-  Array.from($options)[getIndex($options, "cornerDotColor")].value = "#d53839"
+  Array.from($options)[getIndex($options, "cornerDotColor")].value = "#ff6609"
   // Array.from($options)[getIndex($options, "imageColor")].value = "#d53839"
   // Array.from($options)[getIndex($options, "backgroundColor")].value = "#fffffd"
   Array.from($options)[getIndex($options, "extension")].value = "png"
@@ -111,6 +113,7 @@ VERSION:3.0
 N:${Array.from($data)[getIndex($data, "LastName")].value};${Array.from($data)[getIndex($data, "Name")].value}
 FN:${Array.from($data)[getIndex($data, "Name")].value} ${Array.from($data)[getIndex($data, "LastName")].value}
 TEL;CELL:${Array.from($data)[getIndex($data, "Phone")].value}
+TEL;WORK:${Array.from($data)[getIndex($data, "Work")].value}
 EMAIL:${Array.from($data)[getIndex($data, "Email")].value}
 ORG:${Array.from($data)[getIndex($data, "Company")].value}
 TITLE:${Array.from($data)[getIndex($data, "Role")].value}
